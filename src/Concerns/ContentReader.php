@@ -17,4 +17,10 @@ trait ContentReader
     {
         return $this->readFile(__DIR__ . "/../../inputs/day{$day}.txt");
     }
+
+    protected function readInput(): string
+    {
+        // Derive the day from the class name (using late static binding)
+        return $this->readInputForDay((int) substr(static::class, -2));
+    }
 }
