@@ -1,8 +1,10 @@
 #!php
 <?php
 
+use Dannyvdsluijs\AdventOfCode2015;
+
 require_once 'vendor/autoload.php';
 
-$answer = (new \Dannyvdsluijs\AdventOfCode2015\Day23())->partTwo();
+$answer = (new AdventOfCode2015\Day10())->partOne();
 
 printf("The correct answer is: %s\r\n", $answer);

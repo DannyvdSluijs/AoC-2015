@@ -24,6 +24,12 @@ trait ContentReader
         return $this->readInputForDay((int) substr(static::class, -2));
     }
 
+    protected function readInputAsNumber(): int
+    {
+        // Derive the day from the class name (using late static binding)
+        return (int) $this->readInput();
+    }
+
     /** @return array<int, string> */
     protected function readInputAsLines(): array
     {
