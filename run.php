@@ -8,6 +8,6 @@ require_once 'vendor/autoload.php';
 ini_set('memory_limit','2048M');
 
 
-$answer = (new AdventOfCode2015\Day06())->partTwo();
+$answer = (new AdventOfCode2015\Day15())->partTwo();
 
 printf("The correct answer is: %s\r\n", $answer);
