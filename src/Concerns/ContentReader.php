@@ -36,4 +36,10 @@ trait ContentReader
         $content = $this->readInput((int) substr(static::class, -2));
         return explode("\n", $content);
     }
+
+    /** @return array<int, int> */
+    public function readInputAsLinesOfIntegers(): array
+    {
+        return array_map(intval(...), $this->readInputAsLines());
+    }
 }
