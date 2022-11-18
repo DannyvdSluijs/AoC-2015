@@ -10,7 +10,6 @@ class Day21
 {
     use ContentReader;
 
-
     private array $weapons = [];
     private array $armors = [];
     private array $rings = [];
