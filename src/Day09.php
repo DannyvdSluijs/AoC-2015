@@ -10,8 +10,11 @@ class Day09
 {
     use ContentReader;
 
+    /** @var array<int, /stdClass> */
     private array $edges = [];
+    /** @var array<int, string> */
     private array $nodes = [];
+    /** @var array<int, /stdClass> */
     private array $results = [];
 
     public function partOne(): string

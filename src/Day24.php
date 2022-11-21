@@ -18,9 +18,9 @@ class Day24
         $each = $sum / 3;
 
         $solutions = $this->recursive($each, $weights);
-        $smallest = min(array_map(fn($a) => count($a), $solutions));
-        $matchingSmallestSize = array_filter($solutions, fn($a) => count($a) === $smallest);
-        $quantumEntanglement = min(array_map(fn($a) => array_reduce($a, fn($carry, $item) => $carry * $item, 1), $matchingSmallestSize));
+        $smallest = min(array_map(static fn($a) => count($a), $solutions));
+        $matchingSmallestSize = array_filter($solutions, static fn($a) => count($a) === $smallest);
+        $quantumEntanglement = min(array_map(static fn($a) => array_reduce($a, static fn($carry, $item) => $carry * $item, 1), $matchingSmallestSize));
 
         return (string) $quantumEntanglement;
     }
@@ -40,7 +40,12 @@ class Day24
         return (string) $quantumEntanglement;
     }
 
-    private function recursive(int $target, array $weights, $stack = [])
+    /**
+     * @param array<int, int> $weights
+     * @param array<int, int> $stack
+     * @return array<int, array<int, int>>
+     */
+    private function recursive(int $target, array $weights, array $stack = []): array
     {
         static $solutions= [];
         static $smallestAmountOfPackages = 999;
@@ -51,19 +56,19 @@ class Day24
         if ($stackSum === $target) {
             $solutions[] = $stack;
             $smallestAmountOfPackages = min($smallestAmountOfPackages, count($stack));
-            return;
+            return [];
         }
         if ($stackSum > $target) {
-            return;
+            return [];
         }
         if ($weights === []) {
-            return;
+            return [];
         }
         if ($stackSize > $smallestAmountOfPackages) {
-            return;
+            return [];
         }
         if ($stackSum + $weightsSum < $target) {
-            return;
+            return [];
         }
 
         $next = array_shift($weights);

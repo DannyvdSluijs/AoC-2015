@@ -73,6 +73,7 @@ class Day19
         return (string) $totalReplacementCount;
     }
 
+    /** @return array<int, string|array<int, \stdClass>> */
     public function parseInput(): array
     {
         $inputs = $this->readInputAsLines();

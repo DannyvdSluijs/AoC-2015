@@ -10,8 +10,11 @@ class Day21
 {
     use ContentReader;
 
+    /** @var array<int, \stdClass>  */
     private array $weapons = [];
+    /** @var array<int, \stdClass>  */
     private array $armors = [];
+    /** @var array<int, \stdClass>  */
     private array $rings = [];
 
     public function __construct()

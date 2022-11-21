@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Dannyvdsluijs\AdventOfCode2015;
 
+use Dannyvdsluijs\AdventOfCode2015\Concerns\ContentReader;
+
 class Day01
 {
+    use ContentReader;
+
     public function partOne(): string
     {
-        $content = file_get_contents(__DIR__ . '/../inputs/day1.txt');
+        $content = $this->readInput();
 
         $upOneFloorAmount  = substr_count($content, '(');
         $downOneFloorAmount  = substr_count($content, ')');
@@ -18,8 +22,7 @@ class Day01
 
     public function partTwo(): string
     {
-        $content = file_get_contents(__DIR__ . '/../inputs/day1.txt');
-        $chars = str_split($content);
+        $chars = $this->readInputAsCharacters();
         $position = 0;
         $floor = 0;
 
@@ -28,6 +31,7 @@ class Day01
             match ($char) {
                 '(' => $floor++,
                 ')' => $floor--,
+                default => throw new \InvalidArgumentException(sprintf('No case for %s', $char)),
             };
 
             if ($floor === -1) {

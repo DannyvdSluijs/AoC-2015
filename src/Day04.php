@@ -16,9 +16,11 @@ class Day04
         $number = 1;
         while (true) {
             $hash = md5($content . $number);
+
             if (str_starts_with($hash, '00000')) {
                 return (string) $number;
             }
+
             $number++;
         }
     }
@@ -29,9 +31,11 @@ class Day04
         $number = 1;
         while (true) {
             $hash = md5($content . $number);
+
             if (str_starts_with($hash, '000000')) {
                 return (string) $number;
             }
+
             $number++;
         }
     }

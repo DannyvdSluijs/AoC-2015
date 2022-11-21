@@ -60,6 +60,7 @@ class Day03
             '>' => $position->x++,
             'v' => $position->y--,
             '<' => $position->x--,
+            default => throw new \InvalidArgumentException(sprintf('No case for %s', $move)),
         };
     }
 
@@ -68,12 +69,17 @@ class Day03
         return $position->x . ',' . $position->y;
     }
 
+    /**
+     * @param array<string, int> $currentDeliveries
+     * @return array<string, int>
+     */
     private function addDelivery(\stdClass $position, array $currentDeliveries): array
     {
         $key = $this->getPositionKey($position);
         if (!array_key_exists($key, $currentDeliveries)) {
             $currentDeliveries[$key] = 0;
         }
+
         $currentDeliveries[$key]++;
         printf("Delivered present at %s, total presents is %d\r\n", $key, $currentDeliveries[$key]);
         return $currentDeliveries;

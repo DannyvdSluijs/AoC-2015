@@ -82,6 +82,7 @@ class Day16
                 'equal' => isset($aunt->$property) && $aunt->$property !== $number,
                 'greater' => isset($aunt->$property) && $aunt->$property <= $number,
                 'fewer' => isset($aunt->$property) && $aunt->$property >= $number,
+                default => throw new \InvalidArgumentException("No case for {$comparing}"),
             };
 
             if ($clear) {

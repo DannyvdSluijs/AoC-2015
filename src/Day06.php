@@ -86,6 +86,7 @@ class Day06
                         'on' => $brightness + 1,
                         'off' => max($brightness - 1, 0),
                         'toggle' => $brightness + 2,
+                        default => throw new \InvalidArgumentException("No case for {$instruction->type}"),
                     };
                 }
                 $totalBrightness += $brightness;
@@ -95,6 +96,10 @@ class Day06
         return (string) $totalBrightness;
     }
 
+    /**
+     * @param array<int, string> $lines
+     * @return array<int, \stdClass>
+     */
     public function parseInput(array $lines): array
     {
         $instructions = [];
@@ -116,6 +121,7 @@ class Day06
                     'x2' => (int)$parts[5],
                     'y2' => (int)$parts[6],
                 ],
+                default => throw new \InvalidArgumentException("No case for {$parts[0]}"),
             };
         }
         return $instructions;

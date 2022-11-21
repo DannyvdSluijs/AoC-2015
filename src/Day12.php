@@ -13,7 +13,7 @@ class Day12
     public function partOne(): string
     {
         $content = $this->readInput();
-        $object = json_decode($content);
+        $object = json_decode($content, null, 512, JSON_THROW_ON_ERROR);
         $sum = $this->sum($object);
 
         return (string) $sum;
@@ -22,7 +22,7 @@ class Day12
     public function partTwo(): string
     {
         $content = $this->readInput();
-        $object = json_decode($content);
+        $object = json_decode($content, null, 512, JSON_THROW_ON_ERROR);
         $sum = $this->sum($object, true);
 
         return (string) $sum;
@@ -35,10 +35,11 @@ class Day12
         }
 
         $sum = 0;
-        foreach ($object as $key => $value) {
+        foreach ($object as $value) {
             if (is_numeric($value)) {
                 $sum += (int)$value;
             }
+
             if (is_array($value) || is_object($value)) {
                 $sum += $this->sum($value, $skipRedOnObject);
             }

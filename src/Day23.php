@@ -33,15 +33,15 @@ class Day23
 
             switch ($current->instruction) {
                 case 'hlf':
-                    $register[$current->register] = $register[$current->register] / 2;
+                    $register[$current->register] /= 2;
                     $pointer++;
                     continue 2;
                 case 'tpl':
-                    $register[$current->register] = $register[$current->register] * 3;
+                    $register[$current->register] *= 3;
                     $pointer++;
                     continue 2;
                 case 'inc':
-                    $register[$current->register] = $register[$current->register] + 1;
+                    $register[$current->register]++;
                     $pointer++;
                     continue 2;
                 case 'jmp':
@@ -52,6 +52,7 @@ class Day23
                         $pointer += $current->offset;
                         continue 2;
                     }
+
                     $pointer++;
                     continue 2;
                 case 'jio':
@@ -59,6 +60,7 @@ class Day23
                         $pointer += $current->offset;
                         continue 2;
                     }
+
                     $pointer++;
                     continue 2;
             }
@@ -90,15 +92,15 @@ class Day23
 
             switch ($current->instruction) {
                 case 'hlf':
-                    $register[$current->register] = $register[$current->register] / 2;
+                    $register[$current->register] /= 2;
                     $pointer++;
                     continue 2;
                 case 'tpl':
-                    $register[$current->register] = $register[$current->register] * 3;
+                    $register[$current->register] *= 3;
                     $pointer++;
                     continue 2;
                 case 'inc':
-                    $register[$current->register] = $register[$current->register] + 1;
+                    $register[$current->register]++;
                     $pointer++;
                     continue 2;
                 case 'jmp':
@@ -109,6 +111,7 @@ class Day23
                         $pointer += $current->offset;
                         continue 2;
                     }
+
                     $pointer++;
                     continue 2;
                 case 'jio':
@@ -116,6 +119,7 @@ class Day23
                         $pointer += $current->offset;
                         continue 2;
                     }
+
                     $pointer++;
                     continue 2;
             }

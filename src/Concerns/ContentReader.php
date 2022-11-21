@@ -10,12 +10,17 @@ trait ContentReader
     {
         $content = file_get_contents($fileName);
 
+        if ($content === false) {
+            throw new \InvalidArgumentException(sprintf('Cannot read from file %s', $fileName));
+
+        }
+
         return trim($content);
     }
 
     protected function readInputForDay(int $day): string
     {
-        return $this->readFile(__DIR__ . "/../../inputs/day{$day}.txt");
+        return $this->readFile(__DIR__ . sprintf('/../../inputs/day%d.txt', $day));
     }
 
     protected function readInput(): string
@@ -24,16 +29,21 @@ trait ContentReader
         return $this->readInputForDay((int) substr(static::class, -2));
     }
 
+    /** @return array<int, string> */
+    protected function readInputAsCharacters(): array
+    {
+        return str_split($this->readInput());
+    }
+
     protected function readInputAsNumber(): int
     {
-        // Derive the day from the class name (using late static binding)
         return (int) $this->readInput();
     }
 
     /** @return array<int, string> */
     protected function readInputAsLines(): array
     {
-        $content = $this->readInput((int) substr(static::class, -2));
+        $content = $this->readInput();
         return explode("\n", $content);
     }
 
@@ -43,7 +53,7 @@ trait ContentReader
         return array_map(intval(...), $this->readInputAsLines());
     }
 
-    /** @return array<int, int> */
+    /** @return array<int, array<int, string>> */
     public function readInputAsGridOfCharacters(): array
     {
         return array_map(str_split(...), $this->readInputAsLines());

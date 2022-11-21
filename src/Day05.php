@@ -18,12 +18,19 @@ class Day05
         $vowels = ['a', 'e', 'i', 'o', 'u'];
 
         foreach ($lines as $line) {
-            if (
-                str_contains($line, 'ab')
-                || str_contains($line, 'cd')
-                || str_contains($line, 'pq')
-                || str_contains($line, 'xy')
-            ) {
+            if (str_contains($line, 'ab')) {
+                continue;
+            }
+
+            if (str_contains($line, 'cd')) {
+                continue;
+            }
+
+            if (str_contains($line, 'pq')) {
+                continue;
+            }
+
+            if (str_contains($line, 'xy')) {
                 continue;
             }
 
@@ -40,7 +47,6 @@ class Day05
             if (!$containsOneLetterTwiceInARow) {
                 continue;
             }
-
 
             $vowelCount = 0;
             foreach ($vowels as $vowel) {

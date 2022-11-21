@@ -10,13 +10,14 @@ class Day07
 {
     use ContentReader;
 
+    /** @var array< string, string> */
     private array $wires = [];
+    /** @var array<string, string> */
     private array $wireCache = [];
 
     public function partOne(): string
     {
-        $content = $this->readInput();
-        $lines = explode("\n", $content);
+        $lines = $this->readInputAsLines();
 
         foreach ($lines as $line) {
             [$signal, $wire] = explode(' -> ', $line);
@@ -52,9 +53,7 @@ class Day07
             return $this->wireCache[$wire];
         }
 
-        echo "Resolving $wire\r\n";
-
-        $inputs = explode(' ', $this->wires[$wire]);
+        $inputs = explode(' ', (string) $this->wires[$wire]);
         $numberOfInputs = count($inputs);
 
         $result =  match ($numberOfInputs) {

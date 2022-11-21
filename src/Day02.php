@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Dannyvdsluijs\AdventOfCode2015;
 
+use Dannyvdsluijs\AdventOfCode2015\Concerns\ContentReader;
+
 class Day02
 {
+    use ContentReader;
+
     public function partOne(): string
     {
-        $content = file_get_contents(__DIR__ . '/../inputs/day2.txt');
-        $lines = explode("\n", $content);
+        $lines = $this->readInputAsLines();
 
         $totalPaper = 0;
         foreach ($lines as $line) {
@@ -30,8 +33,7 @@ class Day02
 
     public function partTwo(): string
     {
-        $content = file_get_contents(__DIR__ . '/../inputs/day2.txt');
-        $lines = explode("\n", $content);
+        $lines = $this->readInputAsLines();
 
         $totalRibbon = 0;
         foreach ($lines as $line) {

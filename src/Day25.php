@@ -28,13 +28,11 @@ class Day25
 
         $turns = $diagonals[$diagonalNeeded]['min'] + $column - 1;
 
-        var_dump($turns);
-
-        $value = 20151125;
+        $value = 20_151_125;;
         for ($x = 1; $x < $turns; $x++) {
-            $value = $value * 252533 % 33554393;
+            $value = $value * 252533 % 33_554_393;;
         }
-// 30179121 too high
+
         return (string) $value;
     }
 

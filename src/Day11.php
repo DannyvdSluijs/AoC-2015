@@ -27,7 +27,7 @@ class Day11
             chr(ord($chars[3]) + 2),
         ];
 
-        return implode($solution);
+        return implode('', $solution);
     }
 
     public function partTwo(): string
@@ -45,6 +45,6 @@ class Day11
             'c'
         ];
 
-        return implode($solution);
+        return implode('', $solution);
     }
 }

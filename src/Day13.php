@@ -18,6 +18,7 @@ class Day13
         foreach ($lines as $line) {
             $line = str_replace('.', '', $line);
             $parts = explode(' ', $line);
+            $parts[3] = (int) $parts[3];
 
             $inputs[] = (object) [
                 'person' => $parts[0],
@@ -62,6 +63,7 @@ class Day13
         foreach ($lines as $line) {
             $line = str_replace('.', '', $line);
             $parts = explode(' ', $line);
+            $parts[3] = (int) $parts[3];
 
             $inputs[] = (object) [
                 'person' => $parts[0],
