@@ -6,7 +6,7 @@ namespace Dannyvdsluijs\AdventOfCode2015;
 
 use Dannyvdsluijs\AdventOfCode2015\Concerns\ContentReader;
 
-class Day01
+class Day01 implements PuzzleDay
 {
     use ContentReader;
 

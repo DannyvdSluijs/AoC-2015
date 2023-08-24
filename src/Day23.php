@@ -6,7 +6,7 @@ namespace Dannyvdsluijs\AdventOfCode2015;
 
 use Dannyvdsluijs\AdventOfCode2015\Concerns\ContentReader;
 
-class Day23
+class Day23 implements PuzzleDay
 {
     use ContentReader;
 
@@ -29,8 +29,6 @@ class Day23
         $numberInstructions = count($instructions);
         while($pointer < $numberInstructions) {
             $current = $instructions[$pointer];
-            echo implode(' ', [$pointer, $current->instruction, $current->register, $current->offset]) . ' => ';
-
             switch ($current->instruction) {
                 case 'hlf':
                     $register[$current->register] /= 2;
@@ -88,8 +86,6 @@ class Day23
         $numberInstructions = count($instructions);
         while($pointer < $numberInstructions) {
             $current = $instructions[$pointer];
-            echo implode(' ', [$pointer, $current->instruction, $current->register, $current->offset]) . ' => ';
-
             switch ($current->instruction) {
                 case 'hlf':
                     $register[$current->register] /= 2;
